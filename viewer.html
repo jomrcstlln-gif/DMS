@@ -1,124 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document Viewer - Enterprise DMS</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="[cdnjs.cloudflare.com](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css)" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Document Viewer</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
-    <div class="app-container">
-        <!-- Sidebar (same as index.html) -->
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <h1><i class="fas fa-file-contract"></i> Enterprise DMS</h1>
-                <button class="collapse-btn" id="collapseSidebar">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-            </div>
-            <nav class="sidebar-nav">
-                <ul>
-                    <li><a href="index.html"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>
-                    <li><a href="documents.html"><i class="fas fa-files"></i> <span>Documents</span></a></li>
-                    <li><a href="upload.html"><i class="fas fa-upload"></i> <span>Upload</span></a></li>
-                    <li><a href="#"><i class="fas fa-star"></i> <span>Favorites</span></a></li>
-                    <li><a href="settings.html"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
-                </ul>
-            </nav>
-            <div class="sidebar-footer">
-                <div class="user-info">
-                    <img src="[via.placeholder.com](https://via.placeholder.com/40x40)" alt="User" class="user-avatar">
-                    <div class="user-details">
-                        <span class="user-name">Admin User</span>
-                        <span class="user-role">System Administrator</span>
-                    </div>
-                </div>
-            </div>
-        </aside>
+<!-- Sidebar & Top Nav same as others -->
+<aside class="sidebar" id="sidebar">
+  <div class="logo">Enterprise DMS</div>
+  <nav class="nav">
+    <ul>
+      <li data-page="index"><i class="fas fa-tachometer-alt"></i> Dashboard</li>
+      <li data-page="documents"><i class="fas fa-folder"></i> Documents</li>
+      <li data-page="upload"><i class="fas fa-upload"></i> Upload</li>
+      <li data-page="settings"><i class="fas fa-cog"></i> Settings</li>
+    </ul>
+  </nav>
+</aside>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- Top Navigation -->
-            <header class="top-nav">
-                <div class="nav-left">
-                    <button class="menu-toggle" id="menuToggle">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                    <div class="breadcrumb">
-                        <a href="index.html">Dashboard</a> > 
-                        <a href="documents.html">Documents</a> > 
-                        <span id="documentBreadcrumb">Document Viewer</span>
-                    </div>
-                </div>
-                <div class="nav-right">
-                    <button class="nav-btn"><i class="fas fa-bell"></i></button>
-                    <button class="nav-btn" id="themeToggle"><i class="fas fa-moon"></i></button>
-                </div>
-            </header>
-
-            <!-- Document Viewer Content -->
-            <div class="viewer-content">
-                <div class="viewer-header">
-                    <div class="document-info">
-                        <h2 id="documentTitle">Loading Document...</h2>
-                        <div class="document-meta">
-                            <span id="documentCategory"></span>
-                            <span id="documentSize"></span>
-                            <span id="documentDate"></span>
-                            <span id="documentStatus"></span>
-                        </div>
-                    </div>
-                    <div class="viewer-actions">
-                        <button class="btn btn-primary" id="downloadBtn">
-                            <i class="fas fa-download"></i> Download
-                        </button>
-                        <button class="btn btn-secondary" id="favoriteBtn">
-                            <i class="far fa-star"></i> Favorite
-                        </button>
-                    </div>
-                </div>
-
-                <div class="viewer-container" id="viewerContainer">
-                    <div class="loading-spinner" id="viewerLoading">
-                        <i class="fas fa-spinner fa-spin"></i>
-                        <p>Loading document...</p>
-                    </div>
-                </div>
-
-                <div class="document-details">
-                    <h3>Document Details</h3>
-                    <div class="details-grid">
-                        <div class="detail-item">
-                            <label>Document ID:</label>
-                            <span id="detailId"></span>
-                        </div>
-                        <div class="detail-item">
-                            <label>Department:</label>
-                            <span id="detailDepartment"></span>
-                        </div>
-                        <div class="detail-item">
-                            <label>Uploaded By:</label>
-                            <span id="detailUploader"></span>
-                        </div>
-                        <div class="detail-item">
-                            <label>File Type:</label>
-                            <span id="detailType"></span>
-                        </div>
-                        <div class="detail-item">
-                            <label>Description:</label>
-                            <span id="detailDescription"></span>
-                        </div>
-                        <div class="detail-item">
-                            <label>Tags:</label>
-                            <span id="detailTags"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
+<div class="main">
+  <header class="top-nav">
+    <div class="breadcrumbs" id="breadcrumbs">Viewer</div>
+  </header>
+  <section class="content" id="viewer-section">
+    <div class="document-preview" id="document-preview">
+      <p>Loading document...</p>
     </div>
+    <div class="document-details" id="document-details"></div>
+  </section>
+</div>
 
-    <script src="js/app.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>
