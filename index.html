@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise DMS - Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="[cdnjs.cloudflare.com](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css)" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1><i class="fas fa-file-contract"></i> Enterprise DMS</h1>
+                <button class="collapse-btn" id="collapseSidebar">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active"><a href="index.html"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>
+                    <li><a href="documents.html"><i class="fas fa-files"></i> <span>Documents</span></a></li>
+                    <li><a href="upload.html"><i class="fas fa-upload"></i> <span>Upload</span></a></li>
+                    <li><a href="#"><i class="fas fa-star"></i> <span>Favorites</span></a></li>
+                    <li><a href="settings.html"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <img src="[via.placeholder.com](https://via.placeholder.com/40x40)" alt="User" class="user-avatar">
+                    <div class="user-details">
+                        <span class="user-name">Admin User</span>
+                        <span class="user-role">System Administrator</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Navigation -->
+            <header class="top-nav">
+                <div class="nav-left">
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="breadcrumb">
+                        <span>Dashboard</span>
+                    </div>
+                </div>
+                <div class="nav-right">
+                    <div class="search-container">
+                        <input type="text" placeholder="Search documents..." class="search-input">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <button class="nav-btn"><i class="fas fa-bell"></i></button>
+                    <button class="nav-btn" id="themeToggle"><i class="fas fa-moon"></i></button>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>1,247</h3>
+                            <p>Total Documents</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>984</h3>
+                            <p>Approved</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>187</h3>
+                            <p>Pending Review</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>23</h3>
+                            <p>Active Users</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="recent-docs">
+                        <h2>Recently Opened</h2>
+                        <div class="docs-list" id="recentDocs">
+                            <!-- Dynamically loaded -->
+                        </div>
+                    </div>
+
+                    <div class="quick-stats">
+                        <h2>Document Categories</h2>
+                        <div class="category-chart" id="categoryChart">
+                            <!-- Dynamically loaded -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="activity-feed">
+                    <h2>Recent Activity</h2>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <i class="fas fa-file-upload"></i>
+                            <div class="activity-content">
+                                <p><strong>John Doe</strong> uploaded "Q2 Financial Report"</p>
+                                <span class="activity-time">2 hours ago</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <i class="fas fa-file-download"></i>
+                            <div class="activity-content">
+                                <p><strong>Jane Smith</strong> downloaded "Employee Handbook"</p>
+                                <span class="activity-time">4 hours ago</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div class="activity-content">
+                                <p><strong>Admin</strong> approved "Project Proposal"</p>
+                                <span class="activity-time">6 hours ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
