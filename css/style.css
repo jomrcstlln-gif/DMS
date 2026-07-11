@@ -6,6 +6,7 @@ body {
   color: #333;
   display: flex;
   min-height: 100vh;
+  transition: background-color 0.3s, color 0.3s;
 }
 body.dark-mode {
   background-color: #121212;
@@ -15,7 +16,8 @@ body.dark-mode {
 /* Sidebar */
 .sidebar {
   position: fixed;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 220px;
   height: 100%;
   background-color: #004080;
@@ -23,7 +25,7 @@ body.dark-mode {
   flex-direction: column;
   padding-top: 1em;
   transition: width 0.3s;
-  z-index: 100;
+  z-index: 1000;
 }
 .sidebar .logo {
   color: #fff;
@@ -32,7 +34,7 @@ body.dark-mode {
   margin-bottom: 2em;
   font-weight: bold;
 }
-.sidebar ul {
+.sidebar .nav ul {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -137,7 +139,7 @@ body.dark-mode {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999;
+  z-index: 9999;
 }
 .loader.hide {
   display: none;
@@ -154,3 +156,59 @@ body.dark-mode {
   0% {transform: rotate(0deg);}
   100% {transform: rotate(360deg);}
 }
+
+/* Tables & Forms */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1em;
+}
+thead {
+  background: #eef;
+}
+th, td {
+  padding: 0.75em;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+tr:hover {
+  background: #f9f9f9;
+}
+button {
+  background-color: #004080;
+  color: #fff;
+  border: none;
+  padding: 0.5em 1em;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #0066cc;
+}
+
+/* Form styles */
+form {
+  max-width: 600px;
+  margin: 2em auto;
+  background-color: #fff;
+  padding: 1em;
+  border-radius: 8px;
+}
+.form-group {
+  margin-bottom: 1em;
+}
+label {
+  display: block;
+  margin-bottom: 0.3em;
+}
+input[type="text"],
+input[type="number"],
+input[type="date"],
+textarea,
+select {
+  width: 100%;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+</style>
