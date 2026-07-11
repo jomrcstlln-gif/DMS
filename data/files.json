@@ -1,0 +1,30 @@
+[
+  {
+    "Document ID": "DOC001",
+    "Document Name": "Company Policy",
+    "Category": "Administrative Documents",
+    "Department": "HR",
+    "File Type": "PDF",
+    "File Size": 102400,
+    "Upload Date": "2023-07-15",
+    "Uploaded By": "Admin",
+    "Status": "Active",
+    "Description": "Company policies and procedures.",
+    "Tags": ["policy", "hr"],
+    "File Path": "documents/Administrative Documents/Company Policy.pdf"
+  },
+  {
+    "Document ID": "DOC002",
+    "Document Name": "Annual Report 2022",
+    "Category": "Reports",
+    "Department": "Finance",
+    "File Type": "PDF",
+    "File Size": 204800,
+    "Upload Date": "2023-03-10",
+    "Uploaded By": "Finance Dept",
+    "Status": "Active",
+    "Description": "Annual financial report.",
+    "Tags": ["report", "finance"],
+    "File Path": "documents/Reports/Annual Report 2022.pdf"
+  }
+]
