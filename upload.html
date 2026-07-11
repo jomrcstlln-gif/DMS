@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Document - Enterprise DMS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="[cdnjs.cloudflare.com](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css)" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar (same as index.html) -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1><i class="fas fa-file-contract"></i> Enterprise DMS</h1>
+                <button class="collapse-btn" id="collapseSidebar">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>
+                    <li><a href="documents.html"><i class="fas fa-files"></i> <span>Documents</span></a></li>
+                    <li class="active"><a href="upload.html"><i class="fas fa-upload"></i> <span>Upload</span></a></li>
+                    <li><a href="#"><i class="fas fa-star"></i> <span>Favorites</span></a></li>
+                    <li><a href="settings.html"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <img src="[via.placeholder.com](https://via.placeholder.com/40x40)" alt="User" class="user-avatar">
+                    <div class="user-details">
+                        <span class="user-name">Admin User</span>
+                        <span class="user-role">System Administrator</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Navigation -->
+            <header class="top-nav">
+                <div class="nav-left">
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="breadcrumb">
+                        <a href="index.html">Dashboard</a> > <span>Upload Document</span>
+                    </div>
+                </div>
+                <div class="nav-right">
+                    <button class="nav-btn"><i class="fas fa-bell"></i></button>
+                    <button class="nav-btn" id="themeToggle"><i class="fas fa-moon"></i></button>
+                </div>
+            </header>
+
+            <!-- Upload Content -->
+            <div class="upload-content">
+                <h2>Upload New Document</h2>
+                
+                <form id="uploadForm" class="upload-form">
+                    <div class="form-group">
+                        <label for="fileInput">Select File *</label>
+                        <div class="file-drop-zone" id="fileDropZone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop your file here or click to browse</p>
+                            <input type="file" id="fileInput" class="file-input" required>
+                        </div>
+                        <div class="file-info" id="fileInfo"></div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="documentName">Document Name *</label>
+                            <input type="text" id="documentName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="documentCategory">Category *</label>
+                            <select id="documentCategory" required>
+                                <option value="">Select Category</option>
+                                <option value="Administrative Documents">Administrative Documents</option>
+                                <option value="Reports">Reports</option>
+                                <option value="HR & Employee Records">HR & Employee Records</option>
+                                <option value="Document Control">Document Control</option>
+                                <option value="Inventory & Office Assets">Inventory & Office Assets</option>
+                                <option value="Meetings">Meetings</option>
+                                <option value="Office Forms">Office Forms</option>
+                                <option value="Finance & Procurement">Finance & Procurement</option>
+                                <option value="Digital Administration">Digital Administration</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="department">Department *</label>
+                            <select id="department" required>
+                                <option value="">Select Department</option>
+                                <option value="Administration">Administration</option>
+                                <option value="HR">Human Resources</option>
+                                <option value="Finance">Finance</option>
+                                <option value="IT">IT</option>
+                                <option value="Operations">Operations</option>
+                                <option value="Sales">Sales</option>
+                                <option value="Marketing">Marketing</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="status">Status</label>
+                            <select id="status">
+                                <option value="Pending">Pending Review</option>
+                                <option value="Approved">Approved</option>
+                                <option value="Rejected">Rejected</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea id="description" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tags">Tags (comma-separated)</label>
+                        <input type="text" id="tags" placeholder="e.g., report, financial, q2">
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="history.back()">Cancel</button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-upload"></i> Upload Document
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <div class="modal" id="uploadModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Uploading Document</h3>
+            </div>
+            <div class="modal-body">
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress" id="uploadProgress"></div>
+                    </div>
+                    <span class="progress-text" id="progressText">0%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
