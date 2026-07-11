@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Enterprise DMS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="[cdnjs.cloudflare.com](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css)" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar (same as index.html) -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1><i class="fas fa-file-contract"></i> Enterprise DMS</h1>
+                <button class="collapse-btn" id="collapseSidebar">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>
+                    <li><a href="documents.html"><i class="fas fa-files"></i> <span>Documents</span></a></li>
+                    <li><a href="upload.html"><i class="fas fa-upload"></i> <span>Upload</span></a></li>
+                    <li><a href="#"><i class="fas fa-star"></i> <span>Favorites</span></a></li>
+                    <li class="active"><a href="settings.html"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <img src="[via.placeholder.com](https://via.placeholder.com/40x40)" alt="User" class="user-avatar">
+                    <div class="user-details">
+                        <span class="user-name">Admin User</span>
+                        <span class="user-role">System Administrator</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Navigation -->
+            <header class="top-nav">
+                <div class="nav-left">
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="breadcrumb">
+                        <a href="index.html">Dashboard</a> > <span>Settings</span>
+                    </div>
+                </div>
+                <div class="nav-right">
+                    <button class="nav-btn"><i class="fas fa-bell"></i></button>
+                    <button class="nav-btn" id="themeToggle"><i class="fas fa-moon"></i></button>
+                </div>
+            </header>
+
+            <!-- Settings Content -->
+            <div class="settings-content">
+                <h2>System Settings</h2>
+                
+                <div class="settings-tabs">
+                    <div class="tab-buttons">
+                        <button class="tab-btn active" data-tab="appearance">Appearance</button>
+                        <button class="tab-btn" data-tab="notifications">Notifications</button>
+                        <button class="tab-btn" data-tab="privacy">Privacy & Security</button>
+                        <button class="tab-btn" data-tab="about">About</button>
+                    </div>
+
+                    <div class="tab-content">
+                        <!-- Appearance Tab -->
+                        <div class="tab-pane active" id="appearance-tab">
+                            <div class="setting-group">
+                                <h3>Theme</h3>
+                                <div class="theme-options">
+                                    <label class="theme-option">
+                                        <input type="radio" name="theme" value="light" checked>
+                                        <div class="theme-preview light-theme">
+                                            <i class="fas fa-sun"></i>
+                                            <span>Light</span>
+                                        </div>
+                                    </label>
+                                    <label class="theme-option">
+                                        <input type="radio" name="theme" value="dark">
+                                        <div class="theme-preview dark-theme">
+                                            <i class="fas fa-moon"></i>
+                                            <span>Dark</span>
+                                        </div>
+                                    </label>
+                                    <label class="theme-option">
+                                        <input type="radio" name="theme" value="auto">
+                                        <div class="theme-preview auto-theme">
+                                            <i class="fas fa-desktop"></i>
+                                            <span>System</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="setting-group">
+                                <h3>Interface</h3>
+                                <div class="checkbox-group">
+                                    <label>
+                                        <input type="checkbox" id="animationsEnabled" checked>
+                                        Enable animations
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" id="sidebarCollapsed">
+                                        Start with sidebar collapsed
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Notifications Tab -->
+                        <div class="tab-pane" id="notifications-tab">
+                            <div class="setting-group">
+                                <h3>Notification Preferences</h3>
+                                <div class="checkbox-group">
+                                    <label>
+                                        <input type="checkbox" id="notifyUploads" checked>
+                                        New document uploads
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" id="notifyDownloads" checked>
+                                        Document downloads
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" id="notifyApprovals">
+                                        Document approvals
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" id="notifySystem">
+                                        System updates
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="setting-group">
+                                <h3>Email Notifications</h3>
+                                <div class="checkbox-group">
+                                    <label>
+                                        <input type="checkbox" id="emailWeekly">
+                                        Weekly summary report
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" id="emailImportant">
+                                        Important alerts only
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Privacy & Security Tab -->
+                        <div class="tab-pane" id="privacy-tab">
+                            <div class="setting-group">
+                                <h3>Privacy Settings</h3>
+                                <div class="checkbox-group">
+                                    <label>
+                                        <input type="checkbox" id="collectAnalytics">
+                                        Allow anonymous usage analytics
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" id="saveRecent" checked>
+                                        Save recently viewed documents
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="setting-group">
+                                <h3>Security</h3>
+                                <div class="checkbox-group">
+                                    
