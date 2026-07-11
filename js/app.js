@@ -10,7 +10,7 @@
   const breadcrumbs = document.getElementById('breadcrumbs');
   const loadingOverlay = document.getElementById('loading');
 
-  // Utility functions
+  // Show/hide loader
   const showLoading = () => loadingOverlay.classList.remove('hide');
   const hideLoading = () => loadingOverlay.classList.add('hide');
 
@@ -38,7 +38,6 @@
     populateRecentDocs();
   }
 
-  // Populate categories in dashboard
   function populateCategoryList() {
     const list = document.getElementById('category-list');
     list.innerHTML = '';
@@ -50,19 +49,17 @@
     });
   }
 
-  // Populate recent documents
   function populateRecentDocs() {
     const list = document.getElementById('recent-docs');
     list.innerHTML = '';
     const recent = [...documents].sort((a,b) => new Date(b['Upload Date']) - new Date(a['Upload Date'])).slice(0,5);
-    recent.forEach(doc => {
+    recent.forEach(d => {
       const li = document.createElement('li');
-      li.textContent = doc['Document Name'];
+      li.textContent = d['Document Name'];
       list.appendChild(li);
     });
   }
 
-  // Populate category filter dropdown
   function populateCategoryFilter() {
     const select = document.getElementById('category-filter');
     select.innerHTML = '<option value="">All Categories</option>';
@@ -75,27 +72,29 @@
     });
   }
 
+  function renderDashboard() {
+    // Additional dashboard widgets can be added here
+  }
+
   // Render documents table
   function renderDocuments() {
     const tbody = document.querySelector('#documents-table tbody');
     tbody.innerHTML = '';
 
-    // Apply filters
     const categoryFilter = document.getElementById('category-filter').value;
     const statusFilter = document.getElementById('status-filter').value;
+
     filteredDocs = documents.filter(d => {
       return (categoryFilter ? d.Category===categoryFilter : true) &&
              (statusFilter ? d.Status===statusFilter : true);
     });
 
-    // Pagination
     const totalPages = Math.ceil(filteredDocs.length / itemsPerPage);
     if (currentPage > totalPages) currentPage = totalPages || 1;
-    const startIdx = (currentPage -1) * itemsPerPage;
+    const startIdx = (currentPage - 1) * itemsPerPage;
     const pageDocs = filteredDocs.slice(startIdx, startIdx + itemsPerPage);
 
-    // Populate table
-    pageDocs.forEach(d => {
+    for (const d of pageDocs) {
       const tr = document.createElement('tr');
       tr.innerHTML = `
         <td>${d['Document ID']}</td>
@@ -113,18 +112,18 @@
         </td>
       `;
       tbody.appendChild(tr);
-    });
-    renderPagination(totalPages);
+    }
+
+    renderPagination(Math.ceil(filteredDocs.length / itemsPerPage));
     attachTableActions();
   }
 
-  // Pagination controls
   function renderPagination(totalPages) {
     const container = document.getElementById('pagination');
     container.innerHTML = '';
     for (let i=1; i<=totalPages; i++) {
       const btn = document.createElement('button');
-      btn.textContent = i;
+      btn.innerText = i;
       if (i===currentPage) btn.disabled = true;
       btn.onclick = () => {
         currentPage = i;
@@ -134,7 +133,6 @@
     }
   }
 
-  // Actions: view & download
   function attachTableActions() {
     document.querySelectorAll('.view-btn').forEach(btn => {
       btn.onclick = () => {
@@ -166,22 +164,18 @@
   });
 
   // Filters
-  document.getElementById('category-filter').onchange = () => {
-    currentPage=1; renderDocuments();
-  };
-  document.getElementById('status-filter').onchange = () => {
-    currentPage=1; renderDocuments();
-  };
+  document.getElementById('category-filter').onchange = () => { currentPage=1; renderDocuments(); };
+  document.getElementById('status-filter').onchange = () => { currentPage=1; renderDocuments(); };
 
   // Search
   document.getElementById('search-btn').onclick = () => {
     const q = document.getElementById('search-input').value.toLowerCase();
-    filteredDocs = documents.filter(d => Object.values(d).some(val => String(val).toLowerCase().includes(q)));
+    filteredDocs = documents.filter(d => Object.values(d).some(v => String(v).toLowerCase().includes(q)));
     currentPage=1; renderDocuments();
   };
 
-  // Initialization
+  // Load data on DOM ready
   document.addEventListener('DOMContentLoaded', () => {
-    loadDocuments();
+    await loadDocuments();
   });
 })();
