@@ -1,142 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enterprise DMS - Documents</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="[cdnjs.cloudflare.com](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css)" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Documents - Enterprise DMS</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
-    <div class="app-container">
-        <!-- Sidebar (same as index.html) -->
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <h1><i class="fas fa-file-contract"></i> Enterprise DMS</h1>
-                <button class="collapse-btn" id="collapseSidebar">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-            </div>
-            <nav class="sidebar-nav">
-                <ul>
-                    <li><a href="index.html"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>
-                    <li class="active"><a href="documents.html"><i class="fas fa-files"></i> <span>Documents</span></a></li>
-                    <li><a href="upload.html"><i class="fas fa-upload"></i> <span>Upload</span></a></li>
-                    <li><a href="#"><i class="fas fa-star"></i> <span>Favorites</span></a></li>
-                    <li><a href="settings.html"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
-                </ul>
-            </nav>
-            <div class="sidebar-footer">
-                <div class="user-info">
-                    <img src="[via.placeholder.com](https://via.placeholder.com/40x40)" alt="User" class="user-avatar">
-                    <div class="user-details">
-                        <span class="user-name">Admin User</span>
-                        <span class="user-role">System Administrator</span>
-                    </div>
-                </div>
-            </div>
-        </aside>
+<!-- Sidebar & Top Nav same as index.html -->
+<aside class="sidebar" id="sidebar">
+  <div class="logo">Enterprise DMS</div>
+  <nav class="nav">
+    <ul>
+      <li data-page="index"><i class="fas fa-tachometer-alt"></i> Dashboard</li>
+      <li class="active" data-page="documents"><i class="fas fa-folder"></i> Documents</li>
+      <li data-page="upload"><i class="fas fa-upload"></i> Upload</li>
+      <li data-page="settings"><i class="fas fa-cog"></i> Settings</li>
+    </ul>
+  </nav>
+</aside>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- Top Navigation -->
-            <header class="top-nav">
-                <div class="nav-left">
-                    <button class="menu-toggle" id="menuToggle">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                    <div class="breadcrumb">
-                        <a href="index.html">Dashboard</a> > <span>Documents</span>
-                    </div>
-                </div>
-                <div class="nav-right">
-                    <div class="search-container">
-                        <input type="text" placeholder="Search documents..." class="search-input" id="searchInput">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <button class="nav-btn"><i class="fas fa-bell"></i></button>
-                    <button class="nav-btn" id="themeToggle"><i class="fas fa-moon"></i></button>
-                </div>
-            </header>
+<div class="main">
+  <header class="top-nav">
+    <div class="breadcrumbs" id="breadcrumbs">Documents</div>
+  </header>
 
-            <!-- Documents Content -->
-            <div class="documents-content">
-                <div class="filters-container">
-                    <div class="filter-group">
-                        <label>Category:</label>
-                        <select id="categoryFilter">
-                            <option value="">All Categories</option>
-                            <option value="Administrative Documents">Administrative Documents</option>
-                            <option value="Reports">Reports</option>
-                            <option value="HR & Employee Records">HR & Employee Records</option>
-                            <option value="Document Control">Document Control</option>
-                            <option value="Inventory & Office Assets">Inventory & Office Assets</option>
-                            <option value="Meetings">Meetings</option>
-                            <option value="Office Forms">Office Forms</option>
-                            <option value="Finance & Procurement">Finance & Procurement</option>
-                            <option value="Digital Administration">Digital Administration</option>
-                        </select>
-                    </div>
-                    <div class="filter-group">
-                        <label>Status:</label>
-                        <select id="statusFilter">
-                            <option value="">All Status</option>
-                            <option value="Approved">Approved</option>
-                            <option value="Pending">Pending</option>
-                            <option value="Rejected">Rejected</option>
-                            <option value="Archived">Archived</option>
-                        </select>
-                    </div>
-                    <div class="filter-group">
-                        <label>Sort By:</label>
-                        <select id="sortFilter">
-                            <option value="name">Name A-Z</option>
-                            <option value="name_desc">Name Z-A</option>
-                            <option value="date">Date Newest</option>
-                            <option value="date_old">Date Oldest</option>
-                            <option value="size">Size Largest</option>
-                        </select>
-                    </div>
-                    <button class="btn btn-primary" id="applyFilters">Apply Filters</button>
-                </div>
-
-                <div class="documents-table-container">
-                    <table class="documents-table" id="documentsTable">
-                        <thead>
-                            <tr>
-                                <th data-sort="name">Name <i class="fas fa-sort"></i></th>
-                                <th data-sort="category">Category <i class="fas fa-sort"></i></th>
-                                <th data-sort="fileType">Type <i class="fas fa-sort"></i></th>
-                                <th data-sort="size">Size <i class="fas fa-sort"></i></th>
-                                <th data-sort="date">Upload Date <i class="fas fa-sort"></i></th>
-                                <th data-sort="status">Status <i class="fas fa-sort"></i></th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="documentsTableBody">
-                            <!-- Dynamically loaded -->
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="pagination-container">
-                    <div class="pagination-info" id="paginationInfo">
-                        Showing 0 of 0 documents
-                    </div>
-                    <div class="pagination-controls">
-                        <button class="pagination-btn" id="prevPage" disabled>
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <div class="page-numbers" id="pageNumbers"></div>
-                        <button class="pagination-btn" id="nextPage" disabled>
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </main>
+  <section class="content" id="documents-section">
+    <div class="filters">
+      <select id="category-filter">
+        <option value="">All Categories</option>
+      </select>
+      <select id="status-filter">
+        <option value="">All Statuses</option>
+        <option value="Active">Active</option>
+        <option value="Archived">Archived</option>
+      </select>
     </div>
 
-    <script src="js/app.js"></script>
+    <div class="table-container">
+      <table id="documents-table">
+        <thead>
+          <tr>
+            <th>Doc ID</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Department</th>
+            <th>Type</th>
+            <th>Size</th>
+            <th>Upload Date</th>
+            <th>Uploaded By</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="pagination" id="pagination"></div>
+  </section>
+</div>
+
+<script src="js/app.js"></script>
 </body>
 </html>
